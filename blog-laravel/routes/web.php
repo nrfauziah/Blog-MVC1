@@ -23,8 +23,6 @@ Route::get('/', function () {
 
 Route::resource('blog', BlogController::class);
 
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-
 //blog
 Route::get('datablog','BlogController@index')->name('datablog');
 Route::get('datablog/create','BlogController@create')->name('tambahdatablog');

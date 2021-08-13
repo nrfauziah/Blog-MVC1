@@ -12,10 +12,10 @@
                             <a href="{{ route('blog.create') }}"><button class="btn btn-sm btn-primary mb-3">[+] Tambah Blog </button></a>
 
                             @if ($message = Session::get('success'))
-                            <div class="alert alert-success">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                            @endif
                         </div>
 
 

@@ -35,7 +35,8 @@
                 <br>
                 <div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ route('datablog') }}" class="btn btn-warning">Back</a>
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                    <a href="{{ route('datablog') }}" class="btn btn-secondary">Back</a>
                 </div>
             </div>
         </div>
