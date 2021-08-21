@@ -16,7 +16,7 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::latest()->paginate(10);
-        return view('blog.index',compact('blogs'));
+        return view('admin.blog.index',compact('blogs'));
     }
 
     /**
@@ -26,7 +26,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        return view('admin.blog.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blogs = Blog::where('id', $id)->first();
-        return view('blog/edit', compact('blogs'));
+        return view('admin/blog/edit', compact('blogs'));
     }
 
     /**

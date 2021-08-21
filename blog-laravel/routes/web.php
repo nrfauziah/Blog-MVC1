@@ -14,12 +14,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['title' => 'BLOG']);
 });
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/login', 'AuthController@login');
+
+Route::get('home', function () {
+    return view('main');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin', function () { return view('admin'); })->middleware('checkRole:admin');
+
+//siswa
+Route::get('datasiswa','SiswaController@index')->name('datasiswa')->middleware(['checkRole:admin,guru']);
+Route::get('datasiswa/create','SiswaController@create')->name('tambahdatasiswa')->middleware(['checkRole:admin,guru']);
+Route::post('datasiswa/create','SiswaController@store')->name('simpandatasiswa')->middleware(['checkRole:admin,guru']);
+
+Route::get('datasiswa/{id}/edit','SiswaController@edit')->middleware(['checkRole:admin,guru']);
+Route::post('datasiswa/{id}/update','SiswaController@update')->middleware(['checkRole:admin,guru']);
+Route::get('datasiswa/{id}/delete','SiswaController@delete')->middleware(['checkRole:admin,guru']);
+Route::get('datasiswa/{id}/detail','SiswaController@detail')->middleware(['checkRole:admin,guru']);
+
+Route::get('siswa', function () { return view('/siswa.siswa'); });
 
 Route::resource('blog', BlogController::class);
 
