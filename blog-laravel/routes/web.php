@@ -44,12 +44,12 @@ Route::get('siswa', function () { return view('/siswa.siswa'); });
 Route::resource('blog', BlogController::class);
 
 //blog
-Route::get('datablog','BlogController@index')->name('datablog');
-Route::get('datablog/create','BlogController@create')->name('tambahdatablog');
-Route::post('datablog/create','BlogController@store')->name('simpandatablog');
+Route::get('datablog','BlogController@index')->name('datablog')->middleware(['checkRole:admin,pembuat']);
+Route::get('datablog/create','BlogController@create')->name('tambahdatablog')->middleware(['checkRole:admin,pembuat']);
+Route::post('datablog/create','BlogController@store')->name('simpandatablog')->middleware(['checkRole:admin,pembuat']);
 
-Route::get('datablog/{id}/edit','BlogController@edit');
-Route::post('datablog/{id}/update','BlogController@update');
-Route::get('datablog/{id}/delete','BlogController@delete');
+Route::get('datablog/{id}/edit','BlogController@edit')->middleware(['checkRole:admin,pembuat']);
+Route::post('datablog/{id}/update','BlogController@update')->middleware(['checkRole:admin,pembuat']);
+Route::get('datablog/{id}/delete','BlogController@delete')->middleware(['checkRole:admin,pembuat']);
 
 Route::get('blog', function () { return view('/blog'); });

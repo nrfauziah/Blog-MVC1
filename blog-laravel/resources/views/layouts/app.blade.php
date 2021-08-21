@@ -34,14 +34,14 @@
                     </li>
                     @endif
             
-                    @if(Auth::user()->role == 'guru')
+                    @if(Auth::user()->role == 'pembuat')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('guru')}}">Halaman Guru</a>
+                        <a class="nav-link" href="{{url('pembuat')}}">Halaman Pembuat</a>
                     </li>
                     @endif
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('siswa')}}">Halaman Siswa</a>
+                        <a class="nav-link" href="{{url('pembaca')}}">Halaman Pembaca</a>
                     </li>
 
                     @endif
